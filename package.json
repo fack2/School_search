@@ -1,0 +1,29 @@
+{
+  "name": "school_search",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start":"node src/server.js",
+    "dev":"nodemon src/server.js"
+
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fack2/School_search.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/fack2/School_search/issues"
+  },
+  "homepage": "https://github.com/fack2/School_search#readme",
+  "dependencies": {
+    "env2": "^2.2.2",
+    "pg": "^7.12.0"
+  },
+  "devDependencies": {
+    "nodemon": "^1.19.1"
+  }
+}
