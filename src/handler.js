@@ -1,8 +1,10 @@
 const fs = require("fs");
 const path = require("path");
-const qs = require("query-string");
+const qs = require("qs");
 const bcrypt = require('bcrypt')
 const cookie = require("cookie");
+const jwt = require('jsonwebtoken');
+require('env2')('./config.env');
 const getUser = require("./database/queries/getUser.js");
 const getData = require("./database/queries/getData.js");
 const addData = require("./database/queries/addUser.js");
@@ -15,26 +17,27 @@ const {
 const SECRET = process.env.SECRET;
 
 const homeHandler = (request, response) => {
-    if (request.headers.cookie) {
+    console.log(request.headers)
+
+    if (!request.headers.cookie) {
+        const filePath = path.join(__dirname, '..', '/public', '/index.html');
+        fs.readFile(filePath, (error, file) => {
+            if (error) {
+                response.writeHead(500, {
+                    "Content-Type": "text/html"
+                });
+                response.end("<h1>Server Error</h1>");
+            } else {
+                response.writeHead(200, {
+                    "Content-Type": "text/html"
+                });
+                response.end(file);
+            }
+        });
+    } else {
         jwt.verify(cookie.parse(request.headers.cookie).token, SECRET, function (error, resp) {
             if (resp) {
-                const htmlPath = path.join(__dirname, '..', '..', 'public', 'userPage.html');
-                fs.readFile(filePath, (error, file) => {
-                    if (error) {
-                        response.writeHead(500, {
-                            "Content-Type": "text/html"
-                        });
-                        response.end("<h1>Server Error</h1>");
-                    } else {
-                        response.writeHead(200, {
-                            "Content-Type": "text/html"
-                        });
-                        response.end(file);
-                    }
-                });
-
-            } else if (!resp) {
-                const htmverifylPath = path.join(__dirname, '..', '..', 'public', 'index.html');
+                const filePath = path.join(__dirname, '..', '/public', '/search.html');
                 fs.readFile(filePath, (error, file) => {
                     if (error) {
                         response.writeHead(500, {

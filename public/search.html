@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>Schools Search</title>
+  <meta charset="UTF-8" />
+  <link href="https://fonts.googleapis.com/css?family=Fira+Sans+Extra+Condensed|Kalam&display=swap" rel="stylesheet" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="../public/style2.css" />
+  <link href="https://fonts.googleapis.com/css?family=Fira+Sans+Extra+Condensed|Kalam&display=swap" rel="stylesheet" />
+</head>
+
+<body>
+
+  <h1>Schools Search</h1>
+
+  <section id="form" class="form">
+    <label for="searchBox">
+      <input id="search" type="search" class="search" placeholder="Enter school Name... " />
+      <button class="button" id="button">Search</button>
+
+
+
+      <div class="container">
+        <form id="contact" action="/add_school" method="post">
+          <h3>Add School</h3>
+
+          <label>.<input placeholder="School name" name="school" required></label>
+
+          <label>.<input placeholder="location" type="loc" name="location" required></label>
+          <label>.<button name="submit" type="submit" id="contact-submit"
+              data-submit="...Sending">Submit</button></label>
+
+        </form>
+      </div>
+
+</body>
+
+</html>

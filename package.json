@@ -24,7 +24,8 @@
     "env2": "^2.2.2",
     "jsonwebtoken": "^8.5.1",
     "pg": "^7.12.0",
-    "query-string": "^6.8.2"
+    "query-string": "^6.8.2",
+    "request": "^2.88.0"
   },
   "devDependencies": {
     "nodemon": "^1.19.1"
