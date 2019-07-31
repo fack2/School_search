@@ -17,7 +17,6 @@ const {
 const SECRET = process.env.SECRET;
 
 const homeHandler = (request, response) => {
-    console.log(request.headers)
 
     if (!request.headers.cookie) {
         const filePath = path.join(__dirname, '..', '/public', '/index.html');
@@ -123,9 +122,13 @@ const signingHandler = (request, response) => {
 
     });
 };
+const searchHandler = (request, response) => {
+
+};
 
 module.exports = {
     homeHandler,
     publicHandler,
-    signingHandler
+    signingHandler,
+    searchHandler
 };
