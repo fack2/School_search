@@ -50,6 +50,8 @@ const homeHandler = (request, response) => {
                         response.end(file);
                     }
                 });
+            } else if (error) {
+                console.log("MUST log in")
             }
         })
     }
@@ -91,7 +93,6 @@ const signingHandler = (request, response) => {
         } = qs.parse(data);
 
         getUser(username, (err, result) => {
-
             if (err) {
                 response.writeHead(500, {
                     "Content-Type": "text/html"
@@ -99,7 +100,7 @@ const signingHandler = (request, response) => {
                 response.end("<h1>Server Error</h1>");
 
             } else {
-                bcrypt.compare(psw, result.password).then(
+                bcrypt.compare(psw, result.password,
 
                     (err, comparedPass) => {
                         if (err)
@@ -114,13 +115,18 @@ const signingHandler = (request, response) => {
                                 'Set-Cookie': `token=${token}; HttpOnly`
                             });
                             response.end()
-
                         }
                     });
             }
         })
-
     });
+};
+const logOutHandler = (request, response) => {
+    response.writeHead(302, {
+        'Set-Cookie': 'token=0; max-age=0;',
+        'Location': '/'
+    });
+    response.end();
 };
 const searchHandler = (request, response, endpoint) => {
     const searchInput = endpoint.split('?')[1];
@@ -136,13 +142,12 @@ const searchHandler = (request, response, endpoint) => {
         });
         response.end(JSON.stringify(res));
     })
-
-
 };
 
 module.exports = {
     homeHandler,
     publicHandler,
     signingHandler,
+    logOutHandler,
     searchHandler
 };
