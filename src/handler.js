@@ -122,7 +122,21 @@ const signingHandler = (request, response) => {
 
     });
 };
-const searchHandler = (request, response) => {
+const searchHandler = (request, response, endpoint) => {
+    const searchInput = endpoint.split('?')[1];
+    getData(searchInput, (err, res) => {
+        if (err) {
+            response.writeHead(500, {
+                "Content-Type": "text/html"
+            });
+            response.end("<h1>Server Error</h1>");
+        }
+        response.writeHead(200, {
+            "Content-Type": "application/json"
+        });
+        response.end(JSON.stringify(res));
+    })
+
 
 };
 

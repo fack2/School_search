@@ -14,7 +14,7 @@ const router = (request, response) => {
     } else if (endpoint.indexOf("/login") !== -1) {
         signingHandler(request, response);
     } else if (endpoint.indexOf("/search") !== -1) {
-        searchHandler(request, response);
+        searchHandler(request, response, endpoint);
     } else {
         response.writeHead(404, {
             "Content-Type": "text/html"

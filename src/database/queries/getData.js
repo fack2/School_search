@@ -1,15 +1,14 @@
 const databaseConnection = require("../db_connection.js");
 const getData = (name, cb) => {
-  const query =
-    "SELECT * FROM school";
-  databaseConnection.query(query, (err, res) => {
-
+  databaseConnection.query("SELECT * FROM school where name = ($1)", [name], (err, res) => {
     if (err) {
-      cb(err);
+      return cb(err);
     } else {
       cb(null, res.rows);
     }
   });
 };
+
+
 
 module.exports = getData;

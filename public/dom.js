@@ -6,7 +6,6 @@ const request = (url, cb) => {
     .then(data => {
       return cb(data);
     })
-
     .catch(error => {
       console.log(error);
     });
@@ -23,9 +22,19 @@ window.onclick = function (event) {
 const searchInput = document.getElementById('searchInput');
 const searchButton = document.getElementById('buttonSearch');
 searchButton.addEventListener('click', e => {
+  e.preventDefault();
   request(`/search?${searchInput.value}`, data => {
-    console.log(searchInput.value)
+    //dataObj = data[0];
+    const info = document.getElementById('contentDiv');
+    const heade = document.createElement('span');
+    const city = document.createElement('span');
 
-    console.log("data");
+    heade.innerHTML = data[0].name;
+    city.innerText = data[0].location;
+
+    info.appendChild(heade);
+    info.appendChild(city);
+    document.body.appendChild(info);
+
   })
 })
