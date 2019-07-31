@@ -1,7 +1,8 @@
 const {
     homeHandler,
     publicHandler,
-    signingHandler
+    signingHandler,
+    singupHandler
 } = require("./handler");
 
 const router = (request, response) => {
@@ -12,7 +13,10 @@ const router = (request, response) => {
         publicHandler(request, response, endpoint);
     } else if (endpoint.indexOf("/login") !== -1) {
         signingHandler(request, response);
-    } else {
+    } else if (endpoint.indexOf("/signup")!== -1){
+        singupHandler(request,response);
+    }
+    else {
         response.writeHead(404, {
             "Content-Type": "text/html"
         });
