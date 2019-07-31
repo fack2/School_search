@@ -15,6 +15,6 @@ CREATE TABLE school (
 );
 INSERT INTO users (name,password) VALUES ('yaqoot','yaqoot123');
 
-INSERT INTO school (name,location) VALUES ('yaqoot','gaza');
+INSERT INTO school (name,location) VALUES ('widad Nasser Aldin','Hebron'),('Al Hussien','Hebron'),('Al Khansaa','Hebron'),('Al Ukhowwa','Hebron');
 
 COMMIT;

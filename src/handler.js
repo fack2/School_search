@@ -93,7 +93,6 @@ const signingHandler = (request, response) => {
         } = qs.parse(data);
 
         getUser(username, (err, result) => {
-
             if (err) {
                 response.writeHead(500, {
                     "Content-Type": "text/html"
@@ -101,7 +100,7 @@ const signingHandler = (request, response) => {
                 response.end("<h1>Server Error</h1>");
 
             } else {
-                bcrypt.compare(psw, result.password).then(
+                bcrypt.compare(psw, result.password,
 
                     (err, comparedPass) => {
                         if (err)
@@ -129,11 +128,26 @@ const logOutHandler = (request, response) => {
     });
     response.end();
 };
-
+const searchHandler = (request, response, endpoint) => {
+    const searchInput = endpoint.split('?')[1];
+    getData(searchInput, (err, res) => {
+        if (err) {
+            response.writeHead(500, {
+                "Content-Type": "text/html"
+            });
+            response.end("<h1>Server Error</h1>");
+        }
+        response.writeHead(200, {
+            "Content-Type": "application/json"
+        });
+        response.end(JSON.stringify(res));
+    })
+};
 
 module.exports = {
     homeHandler,
     publicHandler,
     signingHandler,
-    logOutHandler
+    logOutHandler,
+    searchHandler
 };

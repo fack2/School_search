@@ -5,8 +5,12 @@ const request = (url, cb) => {
     })
     .then(data => {
       return cb(data);
+    })
+    .catch(error => {
+      console.log(error);
     });
 };
+
 const modal = document.getElementById("id01");
 
 window.onclick = function (event) {
@@ -14,3 +18,23 @@ window.onclick = function (event) {
     modal.style.display = "none";
   }
 };
+
+const searchInput = document.getElementById('searchInput');
+const searchButton = document.getElementById('buttonSearch');
+searchButton.addEventListener('click', e => {
+  e.preventDefault();
+  request(`/search?${searchInput.value}`, data => {
+    //dataObj = data[0];
+    const info = document.getElementById('contentDiv');
+    const heade = document.createElement('span');
+    const city = document.createElement('span');
+
+    heade.innerHTML = data[0].name;
+    city.innerText = data[0].location;
+
+    info.appendChild(heade);
+    info.appendChild(city);
+    document.body.appendChild(info);
+
+  })
+})

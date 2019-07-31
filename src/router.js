@@ -2,8 +2,8 @@ const {
     homeHandler,
     publicHandler,
     signingHandler,
+    searchHandler,
     logOutHandler
-
 } = require("./handler");
 
 const router = (request, response) => {
@@ -16,6 +16,8 @@ const router = (request, response) => {
         signingHandler(request, response);
     } else if (endpoint == "/logout") {
         logOutHandler(request, response);
+    } else if (endpoint.indexOf("/search") !== -1) {
+        searchHandler(request, response, endpoint);
     } else {
         response.writeHead(404, {
             "Content-Type": "text/html"
