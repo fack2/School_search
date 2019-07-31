@@ -1,26 +1,20 @@
 BEGIN;
-DROP TABLE IF EXISTS user CASCADE;
-DROP TABLE IF EXISTS school CASCADE;
+DROP TABLE IF EXISTS users, school CASCADE;
 
-CREATE TABLE user (
-    id SERIAL PRIMARY KEY,
-    name VARCHAR NOT NULL,
-    password VARCHAR NOT NULL
-
+CREATE TABLE users (
+  id            serial        PRIMARY KEY,
+  name    varchar(100)  NOT NULL,
+  password       varchar(100)  NOT NULL
 );
-
 
 CREATE TABLE school (
-    id SERIAL PRIMARY KEY,
-    name VARCHAR NOT NULL,
-    lacation TEXT 
+    id serial PRIMARY KEY,
+    name VARCHAR(100) NOT NULL,
+    location TEXT 
 
 );
-INSERT INTO user (name,password) VALUES ('yaqoot','yaqoot123'),('someya','someya123')
-INSERT INTO school (name,lacation) VALUES  ('Alhussain Ben Ali Secondary School
-',' Ain Sarah, Hebron'),('wedad naser eldeen','hebron');
+INSERT INTO users (name,password) VALUES ('yaqoot','yaqoot123');
 
-
-
+INSERT INTO school (name,location) VALUES ('yaqoot','gaza');
 
 COMMIT;

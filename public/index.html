@@ -1,41 +1,41 @@
 <!DOCTYPE html>
-<html lang="en"> 
-    <head>
-        <meta charset="utf-8"/>
-       <title >School Scarch</title>
-       <link rel="stylesheet" type="text/css" href="./style.css">
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <title>School Scarch</title>
+    <link rel="stylesheet" type="text/css" href="../public/style.css">
+</head>
+
+<body>
+    <img class="img"
+        src="https://previews.123rf.com/images/anthonycz/anthonycz1611/anthonycz161100049/68480244-school-icon-on-white-isolated-building.jpg"
+        alt="img" />
+
+    <div class="login-container">
+        <form action="/login" id="contact" method="POST">
+            <input id="username" class="name" type="text" placeholder="Username" name="username">
+            <input id="Password" class="pass" type="text" placeholder="Password" name="psw">
+            <button id="login" class="log" type="submit">Login</button>
+
+        </form>
+    </div>
 
 
-    </head>
-    <body>
-  <img class="img"
-            src="https://previews.123rf.com/images/anthonycz/anthonycz1611/anthonycz161100049/68480244-school-icon-on-white-isolated-building.jpg"
-            alt="img" />
 
-     <div class="login-container">
-         <form action="/login" id="contact">
-         <input id= "username" class="name" type="text" placeholder="Username" name="username">
-         <input id= "Password"  class="pass" type="text" placeholder="Password" name="psw">
-         <button id= "login"  class="log" type="submit">Login</button>
-      
-          </form>
-      </div>
-
-      
-
-      <div id="id01" class="modal">
-            <form class="modal-content animate" action="/signup" method="POST">
-              <div class="imgcontainer">
+    <div id="id01" class="modal">
+        <form class="modal-content animate" action="/signup" method="POST">
+            <div class="imgcontainer">
                 <span onclick="document.getElementById('id01').style.display='none'" class="close"
-                  title="Close Modal">&times;</span>
-              
-              </div>
-        
-              <div class="container">
-            
+                    title="Close Modal">&times;</span>
+
+            </div>
+
+            <div class="container">
+
                 <label for="name"><b>User Name</b></label>
                 <input type="text" placeholder="Enter Your Name" id="name" required />
-        
+
 
                 <label for="email"><b>Email</b></label>
                 <input type="text" placeholder="Enter Your Email" id="email" required />
@@ -47,30 +47,30 @@
 
                 <label for="confirmPassword"><b>Confirm Password</b></label>
                 <input type="text" placeholder="Confirm Password" id="confirmPassword" required />
-        
-                <button type="submit">Signup</button>
-              </div>
-        
-              <div class="container" style="background-color:#f1f1f1">
+                <button type="submit">SignUp</button>
+            </div>
+
+            <div class="container" style="background-color:#f1f1f1">
                 <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">
-                  Cancel
+                    Cancel
                 </button>
-              </div>
-            </form>
-          </div>
-        
-          <section id="info" class="info"></section>
-          <footer id="footer">
-            <p class="pra">If you dont have an acount please sign up</p>
+            </div>
+        </form>
+    </div>
+
+    <section id="info" class="info"></section>
+    <footer id="footer">
         <button>
-            <a id="Sign" onclick="document.getElementById('id01').style.display='block'" style="width:auto;">
-              SignUp
+            <a id="addPlace" onclick="document.getElementById('id01').style.display='block'" style="width:auto;">
+                SignUp
             </a>
 
         </button>
-          </footer>
-        
-          <script type="text/javascript" src="/public/dom.js"></script>
-        </body>
-        
-        </html>
+    </footer>
+
+    <script type="text/javascript" src="../public/dom.js"></script>
+</body>
+
+</html>
+
+</html>

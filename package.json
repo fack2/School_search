@@ -5,9 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start":"node src/server.js",
-    "dev":"nodemon src/server.js"
-
+    "start": "node src/server.js",
+    "dev": "nodemon src/server.js"
   },
   "repository": {
     "type": "git",
@@ -20,8 +19,13 @@
   },
   "homepage": "https://github.com/fack2/School_search#readme",
   "dependencies": {
+    "bcrypt": "^3.0.6",
+    "cookie": "^0.4.0",
     "env2": "^2.2.2",
-    "pg": "^7.12.0"
+    "jsonwebtoken": "^8.5.1",
+    "pg": "^7.12.0",
+    "query-string": "^6.8.2",
+    "request": "^2.88.0"
   },
   "devDependencies": {
     "nodemon": "^1.19.1"
