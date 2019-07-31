@@ -8,6 +8,8 @@ const sql = fs
 
 dbConnection.query(sql, (err, res) => {
   if (err) {
+    console.log('++++++++', err);
+
     throw err
   }
   console.log('Super heroes table created with result: ', res)

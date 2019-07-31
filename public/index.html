@@ -1,12 +1,75 @@
 <!DOCTYPE html>
-<html lang="en"> 
-    <head>
-        <meta charset="utf-8"/>
-       <title >School Scarch</title>
-       <link rel="stylesheet" type="text/css" href="./style.css">
-    </head>
-    <body>
+<html lang="en">
 
-        <script type="text/javascript" src="./dom.js"></script>
-    </body>
+<head>
+    <meta charset="utf-8" />
+    <title>School Scarch</title>
+    <link rel="stylesheet" type="text/css" href="../public/style.css">
+
+</head>
+
+<body>
+    <img class="img"
+        src="https://resources.finalsite.net/images/f_auto,q_auto,t_image_size_2/v1553531051/elmhurst205org/w555mh8d5vjlzk18skxj/YorkHighSchool.jpg"
+        alt="img" />
+
+    <div class="login-container">
+        <form action="/login" method="POST">
+            <input id="username" class="name" type="text" placeholder="Username" name="username">
+            <input id="Password" class="pass" type="text" placeholder="Password" name="psw">
+            <button id="login" class="log" type="submit">Login</button>
+            <!-- <button id= "SignUp" class="sign" type="submit">SignUp</button> -->
+        </form>
+    </div>
+
+
+
+    <div id="id01" class="modal">
+        <form class="modal-content animate" action="/addPlace" method="POST">
+            <div class="imgcontainer">
+                <span onclick="document.getElementById('id01').style.display='none'" class="close"
+                    title="Close Modal">&times;</span>
+                <!-- <img src="img_avatar2.png" alt="Avatar" class="avatar"> -->
+            </div>
+
+            <div class="container">
+                <label for="name"><b>Your Name</b></label>
+                <input type="text" placeholder="Enter Your Name" id="name" required />
+
+
+                <label for="email"><b>Your Email</b></label>
+                <input type="text" placeholder="Enter sort" id="email" required />
+
+
+                <label for="password"><b>Your Password</b></label>
+                <input type="text" placeholder="Enter Your Password" id="password" required />
+
+
+                <label for="confirmPassword"><b>Confirm Password</b></label>
+                <input type="text" placeholder="Confirm Password" id="confirmPassword" required />
+
+                <button type="submit">SignUp</button>
+            </div>
+
+            <div class="container" style="background-color:#f1f1f1">
+                <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">
+                    Cancel
+                </button>
+            </div>
+        </form>
+    </div>
+
+    <section id="info" class="info"></section>
+    <footer id="footer">
+        <button>
+            <a id="addPlace" onclick="document.getElementById('id01').style.display='block'" style="width:auto;">
+                SignUp
+            </a>
+
+        </button>
+    </footer>
+
+    <script type="text/javascript" src="../public/dom.js"></script>
+</body>
+
 </html>
