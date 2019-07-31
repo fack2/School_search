@@ -17,7 +17,6 @@ const {
 const SECRET = process.env.SECRET;
 
 const homeHandler = (request, response) => {
-    console.log(request.headers)
 
     if (!request.headers.cookie) {
         const filePath = path.join(__dirname, '..', '/public', '/index.html');
@@ -51,6 +50,8 @@ const homeHandler = (request, response) => {
                         response.end(file);
                     }
                 });
+            } else if (error) {
+                console.log("MUST log in")
             }
         })
     }
@@ -115,17 +116,24 @@ const signingHandler = (request, response) => {
                                 'Set-Cookie': `token=${token}; HttpOnly`
                             });
                             response.end()
-
                         }
                     });
             }
         })
-
     });
 };
+const logOutHandler = (request, response) => {
+    response.writeHead(302, {
+        'Set-Cookie': 'token=0; max-age=0;',
+        'Location': '/'
+    });
+    response.end();
+};
+
 
 module.exports = {
     homeHandler,
     publicHandler,
-    signingHandler
+    signingHandler,
+    logOutHandler
 };
