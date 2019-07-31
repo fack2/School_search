@@ -9,7 +9,7 @@ const postUser=(name,email,password, cb) => {
             cb(err);        
         }
         else
-      cb(null, res.rows[0]);
+      cb(null, {msg:'success'})
 
     }
   );
