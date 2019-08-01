@@ -3,7 +3,9 @@ const {
     publicHandler,
     signingHandler,
     searchHandler,
-    logOutHandler
+    logOutHandler,
+    singupHandler,
+    addSchool
 } = require("./handler");
 
 const router = (request, response) => {
@@ -18,7 +20,10 @@ const router = (request, response) => {
         logOutHandler(request, response);
     } else if (endpoint.indexOf("/search") !== -1) {
         searchHandler(request, response, endpoint);
-    } else {
+     } else if (endpoint== "/signup"){
+          singupHandler(request,response);
+        }
+     else {
         response.writeHead(404, {
             "Content-Type": "text/html"
         });

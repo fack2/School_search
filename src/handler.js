@@ -3,12 +3,16 @@ const path = require("path");
 const qs = require("qs");
 const bcrypt = require('bcrypt')
 const cookie = require("cookie");
-const jwt = require('jsonwebtoken');
 require('env2')('./config.env');
 const getUser = require("./database/queries/getUser.js");
-const getData = require("./database/queries/getData.js");
+const jwt=require("jsonwebtoken");
+
 const addData = require("./database/queries/addUser.js");
+const postUser =require("./database/queries/postUser");
 const signInData = require("./database/queries/signInData.js");
+const getData= require("./database/queries/getData.js")
+
+
 const {
     sign,
     verify
@@ -50,8 +54,6 @@ const homeHandler = (request, response) => {
                         response.end(file);
                     }
                 });
-            } else if (error) {
-                console.log("MUST log in")
             }
         })
     }
@@ -121,6 +123,7 @@ const signingHandler = (request, response) => {
         })
     });
 };
+
 const logOutHandler = (request, response) => {
     response.writeHead(302, {
         'Set-Cookie': 'token=0; max-age=0;',
@@ -144,10 +147,41 @@ const searchHandler = (request, response, endpoint) => {
     })
 };
 
+const singupHandler = (request,response)=>{
+    let data = "";
+    request.on("data",chunk =>{
+        data +=chunk;
+    });
+    request.on("end",(err)=>{
+
+        const {name,email,password} = qs.parse(data);
+bcrypt.hash(password,10,(err,hash)=>{
+if (err){
+    console.log(err);
+}else{
+    postUser(name,email,hash,err=>{
+        if(err){
+            response.writeHead(500,{ "Content-Type": "text/html"})
+            response.end("<h>server error</h>");
+        }
+        
+        response.writeHead(302,{"Location":"/"});
+        response.end();
+    })}
+
+})
+        
+    })
+
+}
+
+
+
 module.exports = {
     homeHandler,
     publicHandler,
     signingHandler,
     logOutHandler,
-    searchHandler
+    searchHandler,
+    singupHandler
 };

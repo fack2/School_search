@@ -1,10 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-  <meta charset="utf-8" />
-  <title>School Scarch</title>
-  <link rel="stylesheet" type="text/css" href="../public/style2.css">
+  <head>
+    <title>Schools Search</title>
+    <meta charset="UTF-8" />
+    <link
+      href="https://fonts.googleapis.com/css?family=Fira+Sans+Extra+Condensed|Kalam&display=swap"
+      rel="stylesheet"
+    />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../public/style2.css" />
+    <link
+      href="https://fonts.googleapis.com/css?family=Fira+Sans+Extra+Condensed|Kalam&display=swap"
+      rel="stylesheet"
+    />
 </head>
 
 <body>
@@ -12,18 +20,22 @@
   <h1>Schools Search</h1>
   <label for="searchBox">
     <input id="searchInput" type="search" class="search" placeholder="Enter school Name... " required="" />
-    <button type="submit" id="buttonSearch"></button>
+    <button type="submit" id="buttonSearch">Search</button>
   </label>
-  <div id="contentDiv"></div>
+  <div id="contentDiv">
+    
+  </div>
 
-  <form id="contact" action="/add_school" method="post">
+  <div class="container">
+     <form id="contact" action="/add_school" method="post">
     <h3>Add School</h3>
-    <label>.<input placeholder="School name" name="school" required></label>
-    <label>.<input placeholder="location" type="loc" name="location" required></label>
-    <label>.<button name="submit" type="submit" id="contact-submit" data-submit="...Sending">Submit</button></label>
+    <label><input placeholder="School name" name="school" required></label>
+    <label><input placeholder="location" type="loc" name="location" required></label>
+    <label><button name="submit" type="submit" id="contact-submit" data-submit="...Sending">Submit</button></label>
   </form>
+</div>
   <form action="/logout" method="POST">
-    <label>.<button name="submit" type="submit" id="contact-submit" data-submit="...Sending">logOut</button></label>
+    <label><button name="submit" type="submit" id="contact-submit" data-submit="...Sending">logOut</button></label>
   </form>
   <script src="../public/dom.js"></script>
 </body>
