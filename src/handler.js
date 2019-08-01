@@ -10,7 +10,6 @@ const alert = require("alert-node");
 
 const addData = require("./database/queries/addUser.js");
 const postUser = require("./database/queries/postUser");
-const signInData = require("./database/queries/signInData.js");
 const getData = require("./database/queries/getData.js");
 
 const { sign, verify } = require("jsonwebtoken");
