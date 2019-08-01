@@ -5,7 +5,6 @@ const postUser=(name,email,password, cb) => {
     'INSERT INTO users (name,email,password) values ($1,$2,$3)',
     [name,email,password],(err,res) => {
       if (err) {
-          console.log(err);
             cb(err);        
         }
         else

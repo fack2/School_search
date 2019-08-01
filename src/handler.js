@@ -21,7 +21,6 @@ const {
 const SECRET = process.env.SECRET;
 
 const homeHandler = (request, response) => {
-    console.log(request.headers)
 
     if (!request.headers.cookie) {
         const filePath = path.join(__dirname, '..', '/public', '/index.html');
@@ -156,17 +155,15 @@ const singupHandler = (request,response)=>{
     request.on("end",(err)=>{
 
         const {name,email,password} = qs.parse(data);
-bcrypt.hash(password,10,function(err,hash){
+bcrypt.hash(password,10,(err,hash)=>{
 if (err){
     console.log(err);
 }else{
     postUser(name,email,hash,err=>{
         if(err){
-            console.log('errrrrr',err)
             response.writeHead(500,{ "Content-Type": "text/html"})
             response.end("<h>server error</h>");
         }
-        console.log('hhhhhhhh');
         
         response.writeHead(302,{"Location":"/"});
         response.end();
