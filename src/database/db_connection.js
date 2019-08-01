@@ -3,7 +3,7 @@ const {
 } = require("pg")
 require('env2')('./config.env')
 
-const connectionString = process.env.local_DB_URL
+const connectionString = process.env.DATABASE_URL
 
 if (!connectionString) {
   throw new Error("Please set a DB_URL environment variable")
