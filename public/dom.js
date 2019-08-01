@@ -13,34 +13,27 @@ const request = (url, cb) => {
 
 const modal = document.getElementById("id01");
 
-window.onclick = function (event) {
+window.onclick = function(event) {
   if (event.target == modal) {
     modal.style.display = "none";
   }
 };
 
-const searchInput = document.getElementById('searchInput');
-const searchButton = document.getElementById('buttonSearch');
-searchButton.addEventListener('click', e => {
+const searchInput = document.getElementById("searchInput");
+const searchButton = document.getElementById("buttonSearch");
+searchButton.addEventListener("click", e => {
   e.preventDefault();
- 
+
   request(`/search?${searchInput.value}`, data => {
-    //dataObj = data[0];
-    const info = document.getElementById('contentDiv');
-    const heade = document.createElement('p');
-    const city = document.createElement('span');
-
-    
-
+    const info = document.getElementById("contentDiv");
+    const heade = document.createElement("span");
+    const city = document.createElement("span");
+    info.innerText = "";
     heade.innerHTML = data[0].name;
     city.innerText = data[0].location;
 
     info.appendChild(heade);
     info.appendChild(city);
     document.body.appendChild(info);
-
-
-    
-
-  })
-})
+  });
+});
