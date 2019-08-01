@@ -38,6 +38,11 @@
   ![image](https://user-images.githubusercontent.com/27896127/62107828-2585ec00-b2b1-11e9-8de5-57de0d747fe6.png)
 
 ## Instructions :
+  - clone the Repo .and be in folder.
+  - npm i command
+  - create local database with user and password 
+  - create config.env file and add DB_URL link and SECRET key.
+  - run the server 
 
 
 ### Team :
