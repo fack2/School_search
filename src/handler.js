@@ -82,6 +82,7 @@ const publicHandler = (request, response, endpoint) => {
   });
 };
 const signingHandler = (request, response) => {
+<<<<<<< HEAD
   let data = "";
   request.on("data", chunk => {
     data += chunk;
@@ -115,6 +116,56 @@ const signingHandler = (request, response) => {
                 "Set-Cookie": `token=${token}; HttpOnly`
               });
               response.end();
+=======
+    let data = '';
+    request.on('data', chunk => {
+        data += chunk;
+    });
+    request.on('end', () => {
+        const {
+            username,
+            psw
+        } = qs.parse(data);
+
+
+        getUser(username, (err, result) => {
+
+            if (err) {
+                response.writeHead(500, {
+                    "Content-Type": "text/html"
+                });
+                response.end("<h1>Server Error</h1>");
+
+            } else {
+                bcrypt.compare(psw, result.password,
+                    (err, comparedPass) => {
+                        if (psw !== result.password) {
+                            response.writeHead(302, {
+                                "Location": "/"
+                            });
+                            alert("wrong password")
+                            response.end();
+                        } else {
+                            if (err) {
+                                console.log('err', err);
+                            } else {
+
+                                const token = sign({
+                                    name: result.name
+                                }, SECRET);
+
+                                response.writeHead(302, {
+                                    'Location': '/',
+                                    'Set-Cookie': `token=${token}; HttpOnly`
+                                });
+                                response.end()
+                            }
+                        }
+
+
+                    });
+                //}
+>>>>>>> master
             }
           }
         );
@@ -147,6 +198,7 @@ const searchHandler = (request, response, endpoint) => {
 };
 
 const singupHandler = (request, response) => {
+<<<<<<< HEAD
   let data = "";
   request.on("data", chunk => {
     data += chunk;
@@ -187,3 +239,49 @@ module.exports = {
   searchHandler,
   singupHandler
 };
+=======
+        let data = "";
+        request.on("data", chunk => {
+            data += chunk;
+        });
+        request.on("end", (err) => {
+
+                    const {
+                        name,
+                        email,
+                        password
+                    } = qs.parse(data);
+                    bcrypt.hash(password, 10, (err, hash) => {
+                        if (err) {
+                            console.log(err);
+                        } else {
+                            postUser(name, email, hash, (err, addeddata) => {
+                                if (err) {
+                                    response.writeHead(500, {
+                                        "Content-Type": "text/html"
+                                    })
+                                    response.end("<h>server error</h>");
+                                }
+
+                                response.writeHead(302, {
+                                    "Location": "/"
+                                });
+                                response.end();
+                            })
+                        }
+
+                    })
+
+                }
+
+
+
+                module.exports = {
+                    homeHandler,
+                    publicHandler,
+                    signingHandler,
+                    logOutHandler,
+                    searchHandler,
+                    singupHandler
+                };
+>>>>>>> master
