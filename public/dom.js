@@ -23,14 +23,13 @@ const searchInput = document.getElementById('searchInput');
 const searchButton = document.getElementById('buttonSearch');
 searchButton.addEventListener('click', e => {
   e.preventDefault();
- 
+
   request(`/search?${searchInput.value}`, data => {
-    //dataObj = data[0];
     const info = document.getElementById('contentDiv');
     const heade = document.createElement('p');
     const city = document.createElement('span');
 
-    
+    info.innerText = "";
 
     heade.innerHTML = data[0].name;
     city.innerText = data[0].location;
@@ -40,7 +39,7 @@ searchButton.addEventListener('click', e => {
     document.body.appendChild(info);
 
 
-    
+
 
   })
 })
