@@ -5,7 +5,7 @@
   site have login page as first page to continue see another which allow user search and add schools in hebron .
 
 ### website :
-  [https://school1search.herokuapp.com/] Scool
+  [School](https://school1search.herokuapp.com/)
 
 ### user journey:
   as a user i should be able sign up
