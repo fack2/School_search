@@ -82,7 +82,6 @@ const publicHandler = (request, response, endpoint) => {
   });
 };
 const signingHandler = (request, response) => {
-<<<<<<< HEAD
   let data = "";
   request.on("data", chunk => {
     data += chunk;
@@ -116,7 +115,6 @@ const signingHandler = (request, response) => {
                 "Set-Cookie": `token=${token}; HttpOnly`
               });
               response.end();
-=======
     let data = '';
     request.on('data', chunk => {
         data += chunk;
@@ -164,8 +162,6 @@ const signingHandler = (request, response) => {
 
 
                     });
-                //}
->>>>>>> master
             }
           }
         );
@@ -198,7 +194,6 @@ const searchHandler = (request, response, endpoint) => {
 };
 
 const singupHandler = (request, response) => {
-<<<<<<< HEAD
   let data = "";
   request.on("data", chunk => {
     data += chunk;
@@ -239,7 +234,6 @@ module.exports = {
   searchHandler,
   singupHandler
 };
-=======
         let data = "";
         request.on("data", chunk => {
             data += chunk;
@@ -284,4 +278,3 @@ module.exports = {
                     searchHandler,
                     singupHandler
                 };
->>>>>>> master
