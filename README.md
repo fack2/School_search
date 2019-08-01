@@ -40,9 +40,9 @@
 ## Instructions :
   - clone the Repo .and be in folder.
   - npm i command
-  - create local database with user and password 
+  - create local database with user and password and build it by command : node src/database/db_bulid.js
   - create config.env file and add DB_URL link and SECRET key.
-  - run the server 
+  - run the server and open the browser with localhost:4000
 
 
 ### Team :
