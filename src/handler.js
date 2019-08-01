@@ -159,7 +159,7 @@ bcrypt.hash(password,10,(err,hash)=>{
 if (err){
     console.log(err);
 }else{
-    postUser(name,email,hash,err=>{
+    postUser(name,email,hash,(err,addeddata)=>{
         if(err){
             response.writeHead(500,{ "Content-Type": "text/html"})
             response.end("<h>server error</h>");
